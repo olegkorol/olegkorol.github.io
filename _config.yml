@@ -6,12 +6,12 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: jekyll-theme-hackcss
+title: Oleg Korol
 description: > # this means to ignore newlines until "baseurl:"
-  A minimalistic theme for Jekyll, based on hack.css
-repository: https://github.com/wemake-services/jekyll-theme-hackcss
-baseurl: /jekyll-theme-hackcss  # the subpath of your site, e.g. /blog
-url: https://wemake-services.github.io  # the base hostname & protocol for your site
+  Oleg Korol's personal site and blog.
+repository: https://github.com/olegkorol/olegkorol.github.io
+baseurl: /  # the subpath of your site, e.g. /blog
+url: https://olegkorol.github.io  # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
@@ -24,40 +24,32 @@ sass:
 theme_mode: markdown  # choices are: 'dark', 'standard', 'markdown'
 
 # Customizations
-your_name: wemake.services
-email: mail@sobolevn.me
+your_name: Oleg Korol
+email: oleg@olegkorol.de
 
 navigation:
   - text: Home
     url: /
-  - text: Docs
-    url: /docs
-  - text: Examples
-    url: /examples
+  - text: Blog
+    url: /blog
+  - text: About
+    url: /about
+  - text: Projects
+    url: /projects
 
 projects:
-  - name: git-secret
-    description: A bash-tool to store your private data inside a git repository.
-    link: https://sobolevn.github.io/git-secret
-    image: https://github.com/sobolevn/git-secret/blob/7c9ae0b1853d4c15549027524121b9e40219fe47/images/git-secret-sm.png?raw=true
-  - name: awesome-cryptography
-    description: A curated list of cryptography resources and links.
-    link: https://github.com/sobolevn/awesome-cryptography
-    image: https://pbs.twimg.com/profile_images/751426570607271937/vGxpniun_400x400.jpg
-  - name: ecto_autoslug_field
-    description: Automatically creates slugs for your Ecto models.
-    link: https://github.com/sobolevn/ecto_autoslug_field
-  - name: django-split-settings
-    description: Organize Django settings into multiple files and directories. Easily override and modify settings. Use wildcards and optional settings files.
-    link: https://github.com/sobolevn/django-split-settings
+  - name: ng2-reddit-clone
+    description: A Reddit clone created to test Angular 2.
+    link: https://olegkorol.github.io/ng2-reddit-clone
+    image: https://avatars1.githubusercontent.com/u/13587499?v=3&u=4649cc013a8405dc4f1ec94c26b9641c6ee12e06&s=400
 
 social:
   - service: github
-    username: sobolevn
-    link: https://github.com/sobolevn
+    username: olegkorol
+    link: https://github.com/olegkorol
   - service: twitter
-    username: sobolevn
-    link: https://twitter.com/sobolevn
+    username: oleg_korol
+    link: https://twitter.com/oleg_korol
 
 # Plugins
 gems:
