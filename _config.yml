@@ -78,7 +78,7 @@ analytics:
 # Site Author
 author:
   name             : "Oleg Korol"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "https://pbs.twimg.com/profile_images/777481249078317056/FpGrNebI.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "I am an amazing person."
   location         : "Munich, Germany"
   email            : "oleg@olegkorol.de"
