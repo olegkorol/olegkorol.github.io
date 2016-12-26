@@ -79,7 +79,7 @@ analytics:
 author:
   name             : "Oleg Korol"
   avatar           : "https://pbs.twimg.com/profile_images/777481249078317056/FpGrNebI.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
+  bio              : "I love learning new stuff. Technical Project Manager @interone. Stack: Angular2, NodeJS, MongoDB & Co."
   location         : "Munich, Germany"
   email            : "oleg@olegkorol.de"
   uri              :
