@@ -1,5 +1,9 @@
 #### joe made this: http://goel.io/joe
 
+# Hexo build
+public/
+.deploy_git/
+
 #####=== Sass ===#####
 
 .sass-cache
