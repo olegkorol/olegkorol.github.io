@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Kaijun's Blog
-subtitle: To Be A Lean Developer!
-author: Kaijun Chen
+title: Oleg Korol's Blog
+subtitle: Around IT stuff
+author: Oleg Korol
 language:
 timezone:
 
@@ -30,8 +30,8 @@ keyword: ""
 # RSS: false
 weibo_username:     Demonbane
 zhihu_username:     Demonbane
-github_username:    Kaijun
-twitter_username:   Demonbane_x
+github_username:    olegkorol
+twitter_username:   oleg_korol
 facebook_username:  demonbane.cn
 linkedin_username:  kaijun-chen-42089354
 
@@ -147,5 +147,5 @@ theme: huxblog
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/Kaijun/hexo-theme-huxblog
+  repo: https://github.com/olegkorol/olegkorol.github.io
   branch: gh-pages
