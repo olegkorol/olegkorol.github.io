@@ -136,7 +136,7 @@ theme: huxblog
 deploy:
   type: git
   repo: https://github.com/olegkorol/olegkorol.github.io
-  branch: gh-pages
+  branch: master
 
 # Admin UI plugin
 ## Docs: https://github.com/jaredly/hexo-admin
