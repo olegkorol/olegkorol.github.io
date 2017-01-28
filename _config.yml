@@ -11,15 +11,15 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://kaijun.rocks/hexo-theme-huxblog
-root: /hexo-theme-huxblog/
+url: https://olegkorol.github..io
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
 #Custom Setting Start
 
 # Site settings
-SEOTitle: Kaijun的博客 | Kaijun's Blog
+SEOTitle: Oleg Korol's Blog
 header-img: img/home-bg.jpg
 email: Kaijun.cn@gmail.com
 description: ""
