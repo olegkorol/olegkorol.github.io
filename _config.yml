@@ -4,7 +4,7 @@
 
 # Site
 title: Oleg Korol's Blog
-subtitle: Around IT stuff
+subtitle: ...about full-stack JavaScript development and tech in general
 author: Oleg Korol
 language: English
 timezone:
@@ -20,8 +20,8 @@ permalink_defaults:
 
 # Site settings
 SEOTitle: Oleg Korol's Blog
-header-img: img/home-bg.jpg
-email: oleg@olegkool.de
+header-img: img/bkg.jpg
+email: oleg@olegkorol.de
 description: "Oleg Korol's personal blog. Thoughts on Web Deveopment. JavaScript."
 keyword: "oleg korol, javascript, web, development, frontend, backend"
 
@@ -45,15 +45,15 @@ disqus_username: oleg_k91
 # Duoshuo settings
 # duoshuo_username: xxx
 # Share component is depend on Comment so we can NOT use share only.
-duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+duoshuo_share: false                     # set to false if you want to use Comment without Sharing
 
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
+# ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
 # Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: huangxuan.me
+# ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+# ga_domain: huangxuan.me
 
 
 # Sidebar settings
