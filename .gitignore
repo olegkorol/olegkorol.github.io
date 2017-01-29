@@ -2,8 +2,8 @@
 
 #####=== HEXO ===#####
 public/
-./db.json
-.git_deploy
+.deploy_git
+db.json
 
 #####=== Sass ===#####
 
