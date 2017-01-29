@@ -1,5 +1,10 @@
 #### joe made this: http://goel.io/joe
 
+#####=== HEXO ===#####
+public/
+./db.json
+.git_deploy
+
 #####=== Sass ===#####
 
 .sass-cache
