@@ -144,3 +144,4 @@ admin:
   username: olegkorol
   password_hash: $2a$04$laLXfDbPHuZCyl3CCz1E8.LRVaxywsJJ7V7tzecvXFnSxXd1Mmld.
   secret: password
+
