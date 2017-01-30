@@ -58,7 +58,7 @@ duoshuo_share: false                     # set to false if you want to use Comme
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Short description goes here..."
+sidebar-about-description: "Learning addict, specially around the JavaScript ecosystem. My current stack includes Angular 2, NodeJS (Express/Koa), MongoDB and MySQL (Sequellize)"
 sidebar-avatar: img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
