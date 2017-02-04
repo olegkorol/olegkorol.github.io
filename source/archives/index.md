@@ -1,6 +1,6 @@
 ---
 layout: "archives"
 title: "Archives"
-description: "Hey, this is Archives."
+description: "The entire posts archive"
 header-img: "img/alternative-bg.png"
 ---
