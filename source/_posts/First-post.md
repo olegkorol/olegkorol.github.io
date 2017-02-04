@@ -1,6 +1,5 @@
 ---
 title: First post
-author: Oleg Korol
 date: 2017-02-04 19:13:41
 ---
 # First Post
