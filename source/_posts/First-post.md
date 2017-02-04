@@ -3,9 +3,9 @@ title: First post
 date: 2017-02-04 19:13:41
 header-img: ./hello_world.jpg
 ---
-# First Post
 
 Welcome!
+
 Similarly to the classic "first commit", this is my all time first blog post, which I will keep really short.
 
 

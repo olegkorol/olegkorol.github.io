@@ -28,32 +28,22 @@ keyword: "oleg korol, javascript, web, development, frontend, backend"
 
 # SNS settings
 # RSS: false
-# weibo_username:     Demonbane
-# zhihu_username:     Demonbane
 github_username:    olegkorol
 twitter_username:   oleg_korol
 facebook_username:  olegkorol.de
 linkedin_username:  oleg-korol-a8057628
 
 # Build settings
-anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+anchorjs: true    # if you want to customize anchor, check out line:181 of `post.html`
 
 
 # Disqus settings
 disqus_username: olegkorol
 
-# Duoshuo settings
-# duoshuo_username: xxx
-# Share component is depend on Comment so we can NOT use share only.
-duoshuo_share: false                     # set to false if you want to use Comment without Sharing
-
-
 # Analytics settings
-# Baidu Analytics
-# ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
-# Google Analytics
-# ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-# ga_domain: huangxuan.me
+#  Google Analytics:
+ga_track_id: 'UA-66639263-1'  # Format: UA-xxxxxx-xx
+ga_domain: olegkorol.de
 
 
 # Sidebar settings
@@ -138,10 +128,4 @@ deploy:
   repo: https://github.com/olegkorol/olegkorol.github.io
   branch: master
 
-# Admin UI plugin
-## Docs: https://github.com/jaredly/hexo-admin
-admin:
-  username: olegkorol
-  password_hash: $2a$04$laLXfDbPHuZCyl3CCz1E8.LRVaxywsJJ7V7tzecvXFnSxXd1Mmld.
-  secret: password
 
