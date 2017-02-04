@@ -4,6 +4,7 @@
 public/
 .deploy_git
 db.json
+.vscode/
 
 #####=== Sass ===#####
 
@@ -124,3 +125,5 @@ example/_site
 Gemfile.lock
 node_modules
 npm-debug.log*
+source/_drafts/
+source/_posts/First-post/
