@@ -17,16 +17,14 @@ In other words, my aim is to keep track of and put together all the small projec
 
 This blog runs on [`Hexo`](https://hexo.io/) - "A fast, simple & powerful blog framework", as the project describes itself. <br>
 It enables anyone to create static websites in a breeze, without any backend and complex Databases.
-<br>
 
 But there's more. Putting Hexo and [`GitHub Pages`](https://pages.github.com)  to work together, you can also easily deploy and host your static website in just a couple command lines. 
-<br>
 
 If your code is hosted on a public GitHub repository it even doesn't cost you a penny. Thanks, GitHub!
-<br><br>
+<br>
 
 #### What's coming next
 In my next post I will explain how to create such a blog, then host in using GitHub Pages and point your own domain to it and configuring a cool CDN, [`Cloudflare`](https://www.cloudflare.com/), which has some perks. 
-<br><br>
+<br>
 
 So see you back soon. Stay tuned!
