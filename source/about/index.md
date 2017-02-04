@@ -1,7 +1,7 @@
 layout: about
 title: About
 description: 'Hey, this is Oleg.'
-header-img: img/about-bg.jpg
+header-img: img/alternative-bg.png
 comments: true
 date: 2016-04-21 04:48:33
 ---

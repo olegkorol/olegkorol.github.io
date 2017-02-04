@@ -20,7 +20,7 @@ permalink_defaults:
 
 # Site settings
 SEOTitle: Oleg Korol's Blog
-header-img: img/bkg.jpg
+header-img: img/home-bg.jpg
 email: oleg@olegkorol.de
 description: "Oleg Korol's personal blog. Thoughts on Web Deveopment. JavaScript."
 keyword: "oleg korol, javascript, web, development, frontend, backend"
