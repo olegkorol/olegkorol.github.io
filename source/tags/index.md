@@ -1,6 +1,6 @@
 ---
 layout: "tags"
 title: "Tags"
-description: "Hey, this is Tags."
+description: "Here you can find different posts by tags."
 header-img: "img/alternative-bg.png"
 ---

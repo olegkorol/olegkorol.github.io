@@ -7,8 +7,8 @@ date: 2016-04-21 04:48:33
 ---
 ##### About
 
-The purpose of this blog is to keep track of my small projects, ideas and experiments.
+In this blog I will be posting (hopefully) interesting news and information related to Web Development with JavaScript. But not exclusively. I will also try to cover topics related to Linux, IoT, DevOps, Cybersecurity and other cool Tech stuff. <br>
+In other words, my aim is to keep track of and put together all the small projects and ideas I will be working on and learning.
 <br><br>
-It is by no means an educational blog and may contain some methods that aren't considered "best practices".
-<br><br>
-Nonetheless I will be more than happy to receive feedback and join constructive discussions. 
+I will be more than happy to receive feedback and join constructive discussions.
+
