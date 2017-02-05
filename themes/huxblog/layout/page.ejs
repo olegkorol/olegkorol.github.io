@@ -72,7 +72,7 @@ layout: layout
                 col-xs-12
                 post-container
             ">
-            
+
                 <%- page.content || body %>
 
                 <!-- 如果开启评论功能 -->
@@ -134,7 +134,7 @@ layout: layout
                             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
                         })();
 
-                        
+
                     </script>
                     <!-- disqus 公共JS代码 end -->
                     <% } %>
@@ -202,27 +202,6 @@ layout: layout
                                     </a>
                                 </li>
                             <% } %>
-                            <% if (config.zhihu_username) { %>
-                                <li>
-                                    <a target="_blank" href="https://www.zhihu.com/people/<%= config.zhihu_username %>">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                                    </a>
-                                </li>
-                            <% } %>
-
-                            <% if (config.weibo_username) { %>
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/<%= config.weibo_username %>">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            <% } %>
 
                             <% if (config.facebook_username) { %>
                                 <li>
@@ -245,8 +224,8 @@ layout: layout
                                     </a>
                                 </li>
                             <% } %>
-                            
-                            
+
+
                             <% if (config.linkedin_username) { %>
                                 <li>
                                     <a target="_blank"  href="https://www.linkedin.com/in/<%= config.linkedin_username %>">
@@ -260,7 +239,7 @@ layout: layout
                         </ul>
                     </div>
                 </section>
-                
+
                 <!-- Friends Blog -->
                 <% if(config.friends) { %>
                 <hr>
