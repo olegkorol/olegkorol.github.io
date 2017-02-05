@@ -48,7 +48,7 @@ ga_domain: olegkorol.de
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Learning addict, specially around the JavaScript ecosystem. My current stack includes Angular 2, NodeJS (Express/Koa), MongoDB (mongoose) and MySQL (Sequellize)."
+sidebar-about-description: "Learning addict, specially around the JavaScript ecosystem. My current stack includes Angular 2, NodeJS (Express/Koa), MongoDB (mongoose) and MySQL (Sequelize)."
 sidebar-avatar: img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
