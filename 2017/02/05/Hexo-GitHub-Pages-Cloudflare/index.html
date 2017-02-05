@@ -13,11 +13,11 @@
 
     <title>
         
-          Oleg Korol&#39;s Blog
+          Hexo + GitHub Pages + Cloudflare - Oleg Korol&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://olegkorol.github.io/">
+    <link rel="canonical" href="https://olegkorol.github.io/2017/02/05/Hexo-GitHub-Pages-Cloudflare/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -147,194 +147,144 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://olegkorol.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<script type='text/javascript' src='http://platform-api.sharethis.com/js/sharethis.js#property=58962fc4b750240012d3ebf2&product=sticky-share-buttons' async='async'></script>
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('./post-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Oleg Korol&#39;s Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">...about full-stack JavaScript development and tech in general</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                        
+                          <a class="tag" href="/tags/#GitHub" title="GitHub">GitHub</a>
+                        
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                          <a class="tag" href="/tags/#Cloudflare" title="Cloudflare">Cloudflare</a>
+                        
+                    </div>
+                    <h1>Hexo + GitHub Pages + Cloudflare</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Oleg Korol on
+                        2017-02-05
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-
-<div class="post-preview">
-
-    <a href="/2017/02/05/Hexo-GitHub-Pages-Cloudflare/">
-        <h2 class="post-title">
-            Hexo + GitHub Pages + Cloudflare
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            In this post I will explain how to create a blog (or any other kind of website) using a static site generator called Hexo, completely built on JavaScript.The source code will be on GitHub and will ......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Oleg Korol on
-        2017-02-05
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/02/04/First-post/">
-        <h2 class="post-title">
-            First post
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Welcome!
-Similarly to the classic “first commit”, this is my all time first blog post, which I will keep really short.
-Blog’s scopeIn this blog I will be posting (hopefully) interesting news and in......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Oleg Korol on
-        2017-02-04
-    </p>
-
-</div>
-<hr>
-
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-    
+                <p>In this post I will explain how to create a blog (or any other kind of website) using a static site generator called <a href="https://github.com/hexojs/hexo" target="_blank" rel="external">Hexo</a>, completely built on JavaScript.<br>The source code will be on GitHub and will be deployed to GitHub Pages.</p>
+<h4 id="Configure-GitHub-Pages"><a href="#Configure-GitHub-Pages" class="headerlink" title="Configure GitHub Pages"></a>Configure GitHub Pages</h4><p>First of all you will need a GitHub repository where you are going to store the source code for your site and later deploy it to GitHub Pages.<br>For those who did not hear about it yet:</p>
+<blockquote>
+<p>GitHub Pages is a static site hosting service.<br>  GitHub Pages is designed to host your personal, organization, or project pages directly from a GitHub repository.<sup id="f1"><a href="#foot1">1</a></sup></p>
+</blockquote>
+<p>You can find a great and short step-by-step guide on how to set up your repository <a href="https://pages.github.com/" target="_blank" rel="external">here</a>.</p>
+<p>Note that for user and organization pages, GitHub will use the content inside the <code>master</code> branch for the deployment. For project pages, GitHub normally uses the branch <code>gh-pages</code>.</p>
+<p>You can try to commit a dummy <code>index.html</code> file to your repository and then go to <code>username.github.io</code> from your browser. You should now see the contents of that file.</p>
+<p>Once here, you should already have your repository set up and a working GitHub page. Cool!<br>Now let’s move to the next step.</p>
+<h4 id="Let’s-get-started-with-Hexo"><a href="#Let’s-get-started-with-Hexo" class="headerlink" title="Let’s get started with Hexo"></a>Let’s get started with Hexo</h4><p>As I was saying before, Hexo is a simple, blazing fast static site generator (or blog framework, as their creators call it) that runs entirely on Node.js.<br>You just need to grab a theme (or create one) and start writing a post using Markdown. Then Hexo generates the static files and deploys them to GitHub Pages or Heroku for you. Just like that!</p>
+<p>Here is a complete <a href="https://hexo.io/docs/" target="_blank" rel="external">guide</a> on how to install Hexo on your machine.</p>
+<p>If you already have Node.js and Git running, all you need to do is install it globally with npm:<br><code>npm install -g hexo-cli</code></p>
+<p>Then you will need to configure it and you are ready to start writing your amazing content!<br>I will not go through all the steps (which are actually not so many) to setup your Hexo project. You can find <a href="https://hexo.io/docs/setup.html" target="_blank" rel="external">here</a> a short setup guide.</p>
+<p>After that, when creating your content, you will be using four commands most of the time: </p>
+<ul>
+<li><code>hexo clean</code>, to delete the database (which is a JSON file) and the public folder.</li>
+<li><code>hexo generate</code>, to generate a new public folder with the updated contents.</li>
+<li><code>hexo serve</code>, to initiate a local instance running on your <code>localhost</code>.</li>
+<li><code>hexo deploy</code>, to deploy the public folder to your platform of choice. In this case to GitHub Pages.</li>
 </ul>
+<p>Note that the command <code>hexo deploy</code> uses your deployment configuration inside the <code>_config.yml</code> file. It looks like this:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Deployment</span></div><div class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></div><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> git</div><div class="line"><span class="attr">  repo:</span> https://github.com/username/username.github.io</div><div class="line"><span class="attr">  branch:</span> master <span class="comment"># remember that GitHub Pages uses this branch</span></div></pre></td></tr></table></figure></p>
+<h3 id="Use-a-custom-domain-for-your-site"><a href="#Use-a-custom-domain-for-your-site" class="headerlink" title="Use a custom domain for your site"></a>Use a custom domain for your site</h3><p>If you have your own domain (I have purchased one from <a href="https://uk.godaddy.com/" target="_blank" rel="external">GoDaddy</a>) it is also possible to point it to your GitHub page. It just takes a couple of steps.</p>
+<p>You can find some detailed instructions for apex domains <a href="https://help.github.com/articles/about-supported-custom-domains/#setting-up-apex-domains" target="_blank" rel="external">here</a>, or for subdomains <a href="https://help.github.com/articles/setting-up-a-custom-subdomain/" target="_blank" rel="external">here</a>.</p>
+<p>This process is always different depending on your domain registrar.</p>
+<h4 id="Optional-Use-a-CDN"><a href="#Optional-Use-a-CDN" class="headerlink" title="Optional: Use a CDN"></a>Optional: Use a CDN</h4><p>For all my websites I always like to configure a CDN (Content Delivery Network), which gives you some extras, like: SSL certificate generation, smart error-handling, analytics, website caching and advanced security features, among others.</p>
+<p>For this purpose I can totally recommend <a href="https://www.cloudflare.com/de/" target="_blank" rel="external">Cloudflare</a>. The guys are doing a really great job and it doesn’t cost you a dime for small projects.</p>
+<p>You are now all set. Go and write some amazing content to share with the world!</p>
+<hr>
+<p>If there’s is any question I can help you with, please comment below.<br>Feedback is always welcome, and I would like to know what you think about Hexo and GitHub Pages.</p>
+<p>Stay tuned for more!</p>
+<p> References:<br><a name="foot1" style="none">1</a>: <a href="https://help.github.com/articles/what-is-github-pages/" target="_blank" rel="external">https://help.github.com/articles/what-is-github-pages/</a> <a href="#f1">↩</a></p>
 
 
+                <hr>
 
-                <!-- 如果开启评论功能 -->
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/02/04/First-post/" data-toggle="tooltip" data-placement="top" title="First post">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
                         
-                            
+                          <a class="tag" href="/tags/#GitHub" title="GitHub">GitHub</a>
                         
-                            
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
-                            
-                        
-                            
+                          <a class="tag" href="/tags/#Cloudflare" title="Cloudflare">Cloudflare</a>
                         
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="/img/avatar.jpg" />
-                        
-
-                        
-                            <p>Learning addict, specially around the JavaScript ecosystem. My current stack includes Angular 2, NodeJS (Express/Koa), MongoDB (mongoose) and MySQL (Sequellize).</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/oleg_korol">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/olegkorol.de">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank"  href="https://github.com/olegkorol">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                            
-                            
-                                <li>
-                                    <a target="_blank"  href="https://www.linkedin.com/in/oleg-korol-a8057628">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -353,9 +303,66 @@ Blog’s scopeIn this blog I will be posting (hopefully) interesting news and in
                 </ul>
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "olegkorol";
+    var disqus_identifier = "https://olegkorol.github.io/2017/02/05/Hexo-GitHub-Pages-Cloudflare/";
+    var disqus_url = "https://olegkorol.github.io/2017/02/05/Hexo-GitHub-Pages-Cloudflare/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->
