@@ -7,7 +7,7 @@ title: Oleg Korol's Blog
 subtitle: ...about full-stack JavaScript development and tech in general
 author: Oleg Korol
 language: English
-timezone:
+timezone: Europe/Berlin
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -22,8 +22,8 @@ permalink_defaults:
 SEOTitle: Oleg Korol's Blog
 header-img: img/home-bg.jpg
 email: oleg@olegkorol.de
-description: "Oleg Korol's personal blog. Thoughts on Web Deveopment. JavaScript."
-keyword: "oleg korol, javascript, web, development, frontend, backend"
+description: "Oleg Korol's personal blog. Thoughts on Web Development and Tech in general. JavaScript Full-Stack."
+keyword: "oleg korol, javascript, web, development, frontend, backend, full-stack"
 
 
 # SNS settings
@@ -48,7 +48,7 @@ ga_domain: olegkorol.de
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Learning addict, specially around the JavaScript ecosystem. My current stack includes Angular 2, NodeJS (Express/Koa), MongoDB and MySQL (Sequellize)"
+sidebar-about-description: "Learning addict, specially around the JavaScript ecosystem. My current stack includes Angular 2, NodeJS (Express/Koa), MongoDB (mongoose) and MySQL (Sequellize)."
 sidebar-avatar: img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -60,12 +60,21 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 # Friends
 friends: [
     {
-        title: "Kaijun's Blog",
-        href: "http://blog.kaijun.rocks"
+        title: "DevChat.tv",
+        href: "https://devchat.tv/"
     },{
-        title: "Hux Blog",
-        href: "http://huangxuan.me"
+        title: "The Changelog",
+        href: "https://changelog.com/"
+    },
+    {
+        title: "NodeUp",
+        href: "http://nodeup.com/"
+    },
+    {
+        title: "Tim Ferriss Show",
+        href: "http://tim.blog/podcast/"
     }
+
 ]
 
 
@@ -89,7 +98,7 @@ default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
-render_drafts: false
+render_drafts: true # Force flag '--drafts' when running 'hexo server' (https://github.com/hexojs/hexo/pull/340)
 post_asset_folder: true
 relative_link: false
 future: true
