@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Just another random tech Blog
+title: Just another random Blog
 subtitle: ...about full-stack JavaScript development and tech in general
 author: Oleg Korol
 language: English
@@ -73,8 +73,23 @@ friends: [
     {
         title: "Tim Ferriss Show",
         href: "http://tim.blog/podcast/"
+    },
+    {
+        title: "Dev.to",
+        href: "https://dev.to/"
+    },
+    {
+        title: "O'Reilly Ideas",
+        href: "https://www.oreilly.com/ideas"
+    },
+    {
+        title: "Hacker News",
+        href: "https://news.ycombinator.com/"
+    },
+    {
+        title: "Scotch.io",
+        href: "https://scotch.io/"
     }
-
 ]
 
 
