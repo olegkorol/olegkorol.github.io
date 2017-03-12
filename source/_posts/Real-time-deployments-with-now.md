@@ -19,7 +19,7 @@ I will only show how it works with a Node.js App. But the same principles apply 
 You have two ways to use Now:
 
 - **CLI tool** (install with `npm i -g now`)
-- **Desktop version** (only MacOS), available for download [here](https://zeit.co/download#). It also includes the CLI tool.
+- **Desktop version**, available for download [here](https://zeit.co/download#). It also includes the CLI tool.
 
 After successfully logging into your account, you are ready to deploy "whatever" you want in seconds.
 
