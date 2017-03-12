@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="Dc2DZ1iyJqu-n3ItWJrCx64Tq9vpcjI8JlozbUhuyoI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Oleg Korol&#39;s personal blog. Thoughts on Web Development and Tech in general. JavaScript Full-Stack.">
+    <meta name="keyword"  content="oleg korol, javascript, web, development, frontend, backend, full-stack">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Real time deployments with Zeit&#39;s Now - Oleg Korol&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://olegkorol.github.io/2017/03/12/Real-time-deployments-with-now/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Just another random Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://olegkorol.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<script type='text/javascript' src='http://platform-api.sharethis.com/js/sharethis.js#property=58962fc4b750240012d3ebf2&product=sticky-share-buttons' async='async'></script>
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                          <a class="tag" href="/tags/#DevOps" title="DevOps">DevOps</a>
+                        
+                          <a class="tag" href="/tags/#Deployment" title="Deployment">Deployment</a>
+                        
+                    </div>
+                    <h1>Real time deployments with Zeit&#39;s Now</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Oleg Korol on
+                        2017-03-12
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>This time I want to share with you an amazing project made by <a href="https://zeit.co/" target="_blank" rel="external">Zeit</a>, the creators of <a href="http://socket.io/" target="_blank" rel="external">socket.io</a><br>and <a href="http://mongoosejs.com/" target="_blank" rel="external">mongoose</a>.<br><a href="https://zeit.co/now" target="_blank" rel="external">Now</a> will deploy your JavaScript (Node.js), Docker or static projects to the cloud at the speed of light. Almost all you have to do is execute one single command in the console and you will get a URL where you can see your deployed project.</p>
+<p>I will only show how it works with a Node.js App. But the same principles apply for Docker and static projects.</p>
+<p>You have two ways to use Now:</p>
+<ul>
+<li><strong>CLI tool</strong> (install with <code>npm i -g now</code>)</li>
+<li><strong>Desktop version</strong> (only MacOS), available for download <a href="https://zeit.co/download#" target="_blank" rel="external">here</a>. It also includes the CLI tool.</li>
+</ul>
+<p>After successfully logging into your account, you are ready to deploy “whatever” you want in seconds.</p>
+<p>Logging-in with the CLI:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; now --login</div><div class="line">&gt; Enter your email: xxx@xxx.com</div><div class="line">&gt; Please follow the link sent to xxx@xxx.com to <span class="built_in">log</span> in.</div><div class="line">&gt; Verify that the provided security code <span class="keyword">in</span> the email matches Xxx Xxxxx.</div><div class="line"></div><div class="line">✔ Confirmed email address!</div><div class="line"></div><div class="line">&gt; Logged <span class="keyword">in</span> successfully. Token saved <span class="keyword">in</span> ~/.now.json</div></pre></td></tr></table></figure>
+<p>Desktop version welcome page:<br><img src="desktop-1.png" alt="Desktop app"><br><img src="desktop-2.png" alt="Desktop app"></p>
+<h2 id="Deploy-a-simple-Express-App"><a href="#Deploy-a-simple-Express-App" class="headerlink" title="Deploy a simple Express App"></a>Deploy a simple Express App</h2><p>For the sake of showing how Now works, I will create a very simple Express App.</p>
+<p>index.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> app  = <span class="built_in">require</span>(<span class="string">"express"</span>)();</div><div class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">4201</span>;</div><div class="line"></div><div class="line"> app.get(<span class="string">"/"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">    res.send(<span class="string">`&lt;h2&gt;Express server is up and running on port <span class="subst">$&#123;port&#125;</span>&lt;/h2&gt;`</span>);</div><div class="line">    <span class="built_in">console</span>.info(<span class="string">`Route '/' was called`</span>)</div><div class="line"> &#125;);</div><div class="line"></div><div class="line"> app.listen(port, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"Express app listening on port:"</span>, port);</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
+<p>Note: it is mandatory to have an npm <em>start</em> or <em>now-start</em> script defined in your package.json in order to deploy. For example:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">"scripts": &#123;</div><div class="line">    "start": "node index.js",</div><div class="line">    "now-start": "node index.js" // This script will overwrite "start"</div><div class="line">  &#125;</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>(For <em>npm build</em> you can also have a specific now-build script. The same principle as above applies)</p>
+<p>Now let’s deploy!<br>Here, again you can use the CLI or drag&amp;drop your folder to the Desktop application.</p>
+<p>That’s how the CLI tool looks like:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&gt; now</div><div class="line">&gt; Deploying ~/Desktop/zeit-now-test</div><div class="line">&gt; Using Node.js 7.6.0 (default)</div><div class="line">&gt; Ready! https://zeit-now-test-gedqsinqpr.now.sh (copied to clipboard) [2s]</div><div class="line">&gt; Upload [====================] 100% 0.0s</div><div class="line">&gt; Sync complete (1.07kB) [4s]</div><div class="line">&gt; Initializing…</div><div class="line">&gt; Building</div><div class="line">&gt; ▲ npm install</div><div class="line">&gt; ⧗ Installing:</div><div class="line">&gt;  ‣ express@^4.15.2</div><div class="line">&gt; ✓ Installed 42 modules [2s]</div><div class="line">&gt; ▲ npm start</div><div class="line">&gt; &gt; zeit-now-test@1.0.0 start /home/nowuser/src</div><div class="line">&gt; &gt; node index.js</div><div class="line">&gt; Express app listening on port: 4201</div><div class="line">&gt; Deployment complete!</div></pre></td></tr></table></figure>
+<p>Now the Express App is publicly available under <code>https://zeit-now-test-gedqsinqpr.now.sh</code>.<br>And it took only about 2 seconds. Impressive!</p>
+<h2 id="Using-custom-deployment-names"><a href="#Using-custom-deployment-names" class="headerlink" title="Using custom deployment names"></a>Using custom deployment names</h2><p>For each new deployment with now, a unique URL will be generated. Note: The old ones always remain available though until you delete them.</p>
+<p>But maybe you do not want to have a new URL each time you deploy your project… if that’s the case, Now has you covered.<br>For that, you will need to create an alias:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; now <span class="built_in">alias</span> https://zeit-now-test-gedqsinqpr.now.sh zeit-now-test</div><div class="line">&gt; Success! Alias created (DPwARUkOxzcde7hXCoUgBl1F):</div><div class="line">https://zeit-now-test.now.sh now points to https://zeit-now-test-gedqsinqpr.now.sh (OheF43olzda9C1GjuWnoVTuf) [copied to clipboard]</div></pre></td></tr></table></figure>
+<p>The first parameter has to be a URL of an already existing Now deployment. You can check the list of deployments with <code>now ls</code>.<br>The second parameter is the custom name of the alias, so it generates the URL <code>https://zeit-now-test.now.sh</code>.</p>
+<p>After each new deployment you can update the alias repeating the command above with the newest deployment URL.</p>
+<p>With the premium version (which costs $14.99/mo) you can even point your deployment to a custom domain.<br>(Some domains as <code>*.de</code> are not working yet though).</p>
+<h2 id="View-the-source-code-of-the-project"><a href="#View-the-source-code-of-the-project" class="headerlink" title="View the source code of the project"></a>View the source code of the project</h2><p>There’s also the possibility to view the source code of the projects directly from the browser, adding <code>/_src</code> to the URL:<br>e.g. <code>https://zeit-now-test.now.sh/_src</code>.</p>
+<p><img src="source-code.png" alt="Source code"></p>
+<p>If you have a premium version you can set your projects to <code>private</code> and the source code will not be shown.<br>For the free version all the project are by default <code>public</code>.</p>
+<h2 id="Use-environmental-variables"><a href="#Use-environmental-variables" class="headerlink" title="Use environmental variables"></a>Use environmental variables</h2><p>You will probably also want to use environmental variables to store some secret information. Now also covers this and lets you work with<br>environmental variables.</p>
+<p>Let’s say I want to have a variable called <code>SALUTATION</code> and use it in the Express App we created before.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> app  = <span class="built_in">require</span>(<span class="string">"express"</span>)();</div><div class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">4201</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> salutation = process.env.SALUTATION; <span class="comment">// our new variable</span></div><div class="line"></div><div class="line"> app.get(<span class="string">"/"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">    res.send(<span class="string">`</span></div><div class="line">    &lt;h1&gt;Hello, <span class="subst">$&#123;salutation&#125;</span>!&lt;/h1&gt;</div><div class="line">    &lt;h2&gt;Express server is up and running on port <span class="subst">$&#123;port&#125;</span>&lt;/h2&gt;</div><div class="line">    `);</div><div class="line">    <span class="built_in">console</span>.info(<span class="string">`Route '/' was called`</span>)</div><div class="line"> &#125;);</div><div class="line"></div><div class="line"> app.listen(port, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"Express app listening on port:"</span>, port);</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
+<p>There are three possible ways to do that:</p>
+<h4 id="Passing-them-manually-upon-deployment"><a href="#Passing-them-manually-upon-deployment" class="headerlink" title="Passing them manually upon deployment"></a>Passing them manually upon deployment</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; now <span class="_">-e</span> SALUTATION=folks</div><div class="line">...</div><div class="line">&gt; Ready! https://zeit-now-test-vwnmjgkefe.now.sh (copied to clipboard) [1s]</div><div class="line">...</div><div class="line">&gt; Deployment complete!</div></pre></td></tr></table></figure>
+<p>Resulting in:<br><img src="env-var-result-1.png" alt="Env Variables"></p>
+<h4 id="Storing-them-in-package-json-within-an-npm-script"><a href="#Storing-them-in-package-json-within-an-npm-script" class="headerlink" title="Storing them in package.json, within an npm script"></a>Storing them in package.json, within an npm script</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"> "scripts": &#123;</div><div class="line">    "start": "node index.js",</div><div class="line">    "deploy-to-now": "now -e SALUTATION=people"</div><div class="line">  &#125;,</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>And then run the script:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt; npm run deploy-to-now</div><div class="line"></div><div class="line">&gt; zeit-now-test@1.0.0 deploy-to-now /Users/oleg.korol/Desktop/zeit-now-test</div><div class="line">&gt; now <span class="_">-e</span> SALUTATION=people</div><div class="line"></div><div class="line">...</div><div class="line">&gt; Ready! https://zeit-now-test-idfdrtjbeg.now.sh (copied to clipboard) [1s]</div><div class="line">...</div><div class="line">&gt; Deployment complete!</div></pre></td></tr></table></figure>
+<p>The result is:<br><img src="env-var-2.png" alt="Env Variables 2"></p>
+<h4 id="The-other-and-best-way-is-to-use-secrets"><a href="#The-other-and-best-way-is-to-use-secrets" class="headerlink" title="The other, and best way is to use secrets"></a>The other, and best way is to use <code>secrets</code></h4><p>Of course you do not want to push sensitive data directly to your git repository so that everyone can see it. So if the environmental<br>variables are storing any secret data you should only use this way for storing them.</p>
+<p>To create a new secret just run:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; now secret add salutation <span class="string">'ladies and gentlemen'</span></div><div class="line">&gt; Success! Secret salutation (sec_n3R4TrxIgib5C67896bXehjnmZR) added [981ms]</div></pre></td></tr></table></figure>
+<p>Then just adapt your npm script to use the new secret (<code>@salutation</code>):</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">"scripts": &#123;</div><div class="line">    "start": "node index.js",</div><div class="line">    "deploy-to-now": "now -e SALUTATION=@salutation"</div><div class="line">  &#125;,</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>… and execute <code>npm run deploy-to-now</code>.</p>
+<p>Voila!<br><img src="voila.png" alt="Voila!"></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Now is a tool that has the potential to exponentially increase the workflow speed of any development team, by providing easy and blazing fast deployments. I really enjoyed playing around with it and cannot wait to implement it in real projects.</p>
+<p>Try it out and feel free to leave your comments below!</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/02/05/Hexo-GitHub-Pages-Cloudflare/" data-toggle="tooltip" data-placement="top" title="Hexo + GitHub Pages + Cloudflare">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                          <a class="tag" href="/tags/#DevOps" title="DevOps">DevOps</a>
+                        
+                          <a class="tag" href="/tags/#Deployment" title="Deployment">Deployment</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://devchat.tv/" target="_blank">DevChat.tv</a></li>
+                    
+                        <li><a href="https://changelog.com/" target="_blank">The Changelog</a></li>
+                    
+                        <li><a href="http://nodeup.com/" target="_blank">NodeUp</a></li>
+                    
+                        <li><a href="http://tim.blog/podcast/" target="_blank">Tim Ferriss Show</a></li>
+                    
+                        <li><a href="https://dev.to/" target="_blank">Dev.to</a></li>
+                    
+                        <li><a href="https://www.oreilly.com/ideas" target="_blank">O&#39;Reilly Ideas</a></li>
+                    
+                        <li><a href="https://news.ycombinator.com/" target="_blank">Hacker News</a></li>
+                    
+                        <li><a href="https://scotch.io/" target="_blank">Scotch.io</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "olegkorol";
+    var disqus_identifier = "https://olegkorol.github.io/2017/03/12/Real-time-deployments-with-now/";
+    var disqus_url = "https://olegkorol.github.io/2017/03/12/Real-time-deployments-with-now/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/oleg_korol">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/olegkorol.de">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/olegkorol">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/oleg-korol-a8057628">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyleft - Just another random Blog 2017
+                    <br>
+                    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <a href="https://twitter.com/intent/tweet?screen_name=olegkorol" class="twitter-mention-button" data-show-count="false">Tweet to @olegkorol</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://olegkorol.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-66639263-1';
+    var _gaDomain = 'olegkorol.de';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+</body>
+
+</html>
