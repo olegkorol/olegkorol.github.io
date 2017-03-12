@@ -116,7 +116,7 @@ filename_case: 0
 render_drafts: true # Force flag '--drafts' when running 'hexo server' (https://github.com/hexojs/hexo/pull/340)
 post_asset_folder: true
 relative_link: false
-future: false
+future: true
 highlight:
   enable: true
   line_number: true
