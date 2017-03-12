@@ -5,6 +5,8 @@ tags:
   - GitHub
   - JavaScript
   - Cloudflare
+  - Hosting
+  - Blogging
 categories:
   - Hosting
   - Blogging
