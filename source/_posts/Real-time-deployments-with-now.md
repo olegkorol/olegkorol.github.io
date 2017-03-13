@@ -9,6 +9,7 @@ categories:
 date: 2017-03-12 17:00:00
 ---
 
+**UPDATE** 2017-03-13: Added content about Databases and the now-API.
 
 This time I want to share with you an amazing project made by [Zeit](https://zeit.co/), the creators of [socket.io](http://socket.io/)
 and [mongoose](http://mongoosejs.com/).
@@ -236,6 +237,29 @@ Then just adapt your npm script to use the new secret (`@salutation`):
 Voila!
 ![Voila!](voila.png)
 
+## Using databases
+
+Right now you might be thinking: "yes, this is all really nice, but how can I store data in a DB?"
+
+Well, as far as I know there is no way to deploy a DB using Now, because you basically have
+no access to the server where your app is being deployed. So the best option is either
+deploying your DB service separately or just using a DBaaS (Database as a Service provider.
+
+I am doing a lot of stuff with MongoDB, so some popular services that I can recommend for it
+include [MongoDB Atlas](https://docs.atlas.mongodb.com/) or [mLab](https://mlab.com/).
+The last one is pretty easy to configure and offers a nice free tier that gives you 500mb,
+which is actually more than enough for small projects.
+
+I am pretty sure that there are good service providers also for other Databases.
+
+## Using the API
+
+Yes, Now also offers a nice API to interact with.
+This can be useful in order to automate your deployments or integrate them with your CI/CD.
+
+It is very well documented [here](https://zeit.co/api#endpoints) and the guys at Zeit even wrote a JavaScript client that you can find on [GitHub](https://github.com/zeit/now-client).
+
+![Deployment State](deployment-state.png)
 
 ## Conclusion
 
