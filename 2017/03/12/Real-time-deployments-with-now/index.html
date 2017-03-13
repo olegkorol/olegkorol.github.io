@@ -197,7 +197,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>This time I want to share with you an amazing project made by <a href="https://zeit.co/" target="_blank" rel="external">Zeit</a>, the creators of <a href="http://socket.io/" target="_blank" rel="external">socket.io</a><br>and <a href="http://mongoosejs.com/" target="_blank" rel="external">mongoose</a>.<br><a href="https://zeit.co/now" target="_blank" rel="external">Now</a> will deploy your JavaScript (Node.js), Docker or static projects to the cloud at the speed of light. Almost all you have to do is execute one single command in the console and you will get a URL where you can see your deployed project.</p>
+                <p><strong>UPDATE</strong> 2017-03-13: Added content about Databases and the now-API.</p>
+<p>This time I want to share with you an amazing project made by <a href="https://zeit.co/" target="_blank" rel="external">Zeit</a>, the creators of <a href="http://socket.io/" target="_blank" rel="external">socket.io</a><br>and <a href="http://mongoosejs.com/" target="_blank" rel="external">mongoose</a>.<br><a href="https://zeit.co/now" target="_blank" rel="external">Now</a> will deploy your JavaScript (Node.js), Docker or static projects to the cloud at the speed of light. Almost all you have to do is execute one single command in the console and you will get a URL where you can see your deployed project.</p>
 <p>I will only show how it works with a Node.js App. But the same principles apply for Docker and static projects.</p>
 <p>You have two ways to use Now:</p>
 <ul>
@@ -244,6 +245,11 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">"scripts": &#123;</div><div class="line">    "start": "node index.js",</div><div class="line">    "deploy-to-now": "now -e SALUTATION=@salutation"</div><div class="line">  &#125;,</div><div class="line">...</div></pre></td></tr></table></figure>
 <p>… and execute <code>npm run deploy-to-now</code>.</p>
 <p>Voila!<br><img src="voila.png" alt="Voila!"></p>
+<h2 id="Using-databases"><a href="#Using-databases" class="headerlink" title="Using databases"></a>Using databases</h2><p>Right now you might be thinking: “yes, this is all really nice, but how can I store data in a DB?”.</p>
+<p>Well, as far as I know there is no way to deploy a DB using Now, because you basically have no access to the server where your app is<br>being deployed. So the best option is either deploying your DB service separately or just using a DBaaS (Database as a Service provider.<br>I am doing a lot of stuff with MongoDB, so some popular services that I can recommend for it include <a href="https://docs.atlas.mongodb.com/" target="_blank" rel="external">MongoDB Atlas</a> or<br><a href="https://mlab.com/" target="_blank" rel="external">mLab</a>. The last one is pretty easy to configure and offers a nice free tier that gives you 500mb, which is actually more than enough<br>for small projects.<br>I am pretty sure that there are good service providers also for other Databases.</p>
+<h2 id="Using-the-API"><a href="#Using-the-API" class="headerlink" title="Using the API"></a>Using the API</h2><p>Yes, Now also offers a nice API to interact with.<br>This can be useful in order to automate your deployments or integrate them with your CI/CD.</p>
+<p>It is very well documented <a href="https://zeit.co/api#endpoints" target="_blank" rel="external">here</a> and the guys at Zeit even wrote a JavaScript client that you can find on <a href="https://github.com/zeit/now-client" target="_blank" rel="external">GitHub</a>.</p>
+<p><img src="deployment-state.png" alt="Deployment State"></p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Now is a tool that has the potential to exponentially increase the workflow speed of any development team, by providing easy and blazing fast deployments. I really enjoyed playing around with it and cannot wait to implement it in real projects.</p>
 <p>Try it out and feel free to leave your comments below!</p>
 
