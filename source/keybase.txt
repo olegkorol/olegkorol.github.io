@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/olegkorol
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://olegkorol.de
+  * I am olegkorol (https://keybase.io/olegkorol) on keybase.
+  * I have a public key ASBQT5rzpId6AxW7uc_Sj5JEO3GDoF4OHv84BR83Exo_pAo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "010102668066140088c22646aab3d60f3155a68b58c5112da3c7289bd6b12ddf14620a",
+            "host": "keybase.io",
+            "kid": "0120504f9af3a4877a0315bbb9cfd28f92443b7183a05e0e1eff38051f37131a3fa40a",
+            "uid": "44c287291aa6a0b562c52aef59d2b919",
+            "username": "olegkorol"
+        },
+        "service": {
+            "hostname": "olegkorol.de",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.20"
+    },
+    "ctime": 1490561281,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1490561147,
+        "hash": "79b9858d9c2c74a227a9724613615445d6cfb6faa7ce93c457e1b42a558128be8c8f9acdcad22e4c95427fc91a91c36a45fdb3671c9175522258cebf4b50ac82",
+        "seqno": 979214
+    },
+    "prev": "9d8a90f64ff264d6d22cc92094fae7b29da7a61af331468d18b5ca99f0ac5fb2",
+    "seqno": 29,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgUE+a86SHegMVu7nP0o+SRDtxg6BeDh7/OAUfNxMaP6QKp3BheWxvYWTFAvZ7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxMDI2NjgwNjYxNDAwODhjMjI2NDZhYWIzZDYwZjMxNTVhNjhiNThjNTExMmRhM2M3Mjg5YmQ2YjEyZGRmMTQ2MjBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwNTA0ZjlhZjNhNDg3N2EwMzE1YmJiOWNmZDI4ZjkyNDQzYjcxODNhMDVlMGUxZWZmMzgwNTFmMzcxMzFhM2ZhNDBhIiwidWlkIjoiNDRjMjg3MjkxYWE2YTBiNTYyYzUyYWVmNTlkMmI5MTkiLCJ1c2VybmFtZSI6Im9sZWdrb3JvbCJ9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoib2xlZ2tvcm9sLmRlIiwicHJvdG9jb2wiOiJodHRwczoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMjAifSwiY3RpbWUiOjE0OTA1NjEyODEsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTQ5MDU2MTE0NywiaGFzaCI6Ijc5Yjk4NThkOWMyYzc0YTIyN2E5NzI0NjEzNjE1NDQ1ZDZjZmI2ZmFhN2NlOTNjNDU3ZTFiNDJhNTU4MTI4YmU4YzhmOWFjZGNhZDIyZTRjOTU0MjdmYzkxYTkxYzM2YTQ1ZmRiMzY3MWM5MTc1NTIyMjU4Y2ViZjRiNTBhYzgyIiwic2Vxbm8iOjk3OTIxNH0sInByZXYiOiI5ZDhhOTBmNjRmZjI2NGQ2ZDIyY2M5MjA5NGZhZTdiMjlkYTdhNjFhZjMzMTQ2OGQxOGI1Y2E5OWYwYWM1ZmIyIiwic2Vxbm8iOjI5LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQKfMfMjMGoqnPbAQ1J+0TkN7ZZFuXbhOw8ENb/xFOYtc7twSv6AN4YX/feMh+n/6R3+eiWqEGgu/mTm6ANE/TQ2oc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCAocuZf1CVQ+XBzV2kBKQ8jQfoqFKoxt793d09z+oRUoqN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/olegkorol
+
+==================================================================
